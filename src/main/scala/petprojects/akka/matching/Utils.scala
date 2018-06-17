@@ -50,7 +50,7 @@ object Utils {
   /**
     * Checks if the aggregate clients balance have been remained invariant
     * @param    balancesBefore balances of the clients before processing
-    * @param    balancesAfter balances of the clients after processing
+    * @param    balancesAfter  balances of the clients after processing
     */
   def checkBalancesInvariant(balancesBefore: Seq[Balance], balancesAfter: Seq[Balance]): Boolean =
     getAggregateBalance(balancesBefore) == getAggregateBalance(balancesAfter)

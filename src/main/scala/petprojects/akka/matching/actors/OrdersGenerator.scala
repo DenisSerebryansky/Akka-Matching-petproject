@@ -48,6 +48,9 @@ class OrdersGenerator extends Actor {
           }
           .seq
 
+      // send messages from Actor.noSender since OrderGenerator doesn't need notification
+      // about order processing result
+
       ordersList.foreach { target.tell(_, Actor.noSender) }
       sender ! GeneratingFinished
   }

@@ -29,7 +29,7 @@ object Client {
   * Can only be in the state `awaitingOrderProcessing`. This state keeps current client balance and waiting list of
   * unprocessed order IDs and order details (waitingOrderIds2Details).
   *
-  * Actor updates itself state every time it receives request for order processing or inserting order to actor's
+  * Actor updates its state every time it receives request for order processing or inserting order into actor's
   * waiting list.
   *
   * Client actor also can respond to a balance queries and `SearchForOrderMatches` requests
@@ -65,8 +65,7 @@ class Client(initialBalance: Balance) extends Actor {
       )
 
     // update state of the client by order ID in the waiting list
-    // (when there is match of the client order only after inserting it in the waiting list)
-
+    // (when the match of the client order appeared only after inserting it in the waiting list)
     case ProcessWaitingOrderById(waitingOrderId) ⇒
       context.become(
         awaitingOrderProcessing(

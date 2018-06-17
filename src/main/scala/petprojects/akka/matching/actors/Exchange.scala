@@ -34,7 +34,7 @@ object Exchange {
   *
   * While being in the `awaitingRequests` state, exchange actor can receive messages of type ExchangeRequest.
   * Depends on request (order or query) this actor creates OrderHandler or QueryHandler, delegates
-  * request processing to them and then changes itself state to `processingRequest`.
+  * request processing to them and then changes its state to `processingRequest`.
   *
   * While being in the `processingRequest` state, exchange actor forwards all incoming messages of type ExchangeRequest
   * to the Buffer actor. If exchange receives result of order or query processing (messages of type ExchangeResponse)
@@ -118,7 +118,7 @@ class Exchange(clientsFileName: String) extends Actor {
     case request: ExchangeRequest ⇒ buffer ! EnqueueExchangeRequest(request, sender)
     case respond: ExchangeResponse ⇒
 
-      // it doesn't make sense to respond to OrderGenerator actor (it sends orders from Actor.noSender)
+      // it doesn't make sense to respond to the OrderGenerator actor (it sends orders from Actor.noSender)
 
       if (senderExists(requester)) requester ! respond
 

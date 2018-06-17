@@ -53,7 +53,7 @@ class OrderHandler(client: ActorRef, restOfTheClients: Set[ActorRef], order: Ord
   /**
     * State of awaiting responses to the `SearchForOrderMatches` request from the clients.
     *
-    * Delegates money and shares transfer to the WireTransfer actor and changes order handler
+    * Delegates money and shares transfer to the WireTransfer actor and changes order handler's
     * behavior to `awaitingTransferResult` when there is order match.
     *
     * Otherwise inserts unprocessed order to the client waiting list.
