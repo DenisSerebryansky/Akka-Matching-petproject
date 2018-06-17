@@ -66,6 +66,7 @@ class Client(initialBalance: Balance) extends Actor {
 
     // update state of the client by order ID in the waiting list
     // (when the match of the client order appeared only after inserting it in the waiting list)
+
     case ProcessWaitingOrderById(waitingOrderId) ⇒
       context.become(
         awaitingOrderProcessing(
